@@ -1,3 +1,7 @@
+Asymptotic Analysis: In what proportion the no. operations will grow as the input grows.
+Asymptotic Analysis is expressed using Big O notation.
+
+
 ///// Problem 1:---------------------------------------------------
 
 https://leetcode.com/problems/squares-of-a-sorted-array/

@@ -1,3 +1,6 @@
+Day1 - Asymptotic
+
+
 Asymptotic Analysis: In what proportion the no. operations will grow as the input grows.
 Asymptotic Analysis is expressed using Big O notation.
 
@@ -27,3 +30,74 @@ var sortedSquares = function(nums) {
     }
     return newNums;
 };
+
+
+///// Problem 2:---------------------------------------------------
+
+https://leetcode.com/problems/monotonic-array/description/
+
+var isMonotonic = function(nums) {
+   // // Method 1: TC=O(n), SC=O(1)
+   // let i=0;
+   // let j=i+1;
+   // let m_i=true;
+   // let m_d=true;
+   // while(j<nums.length){
+   //     if(nums[i] <= nums[j]){
+
+   //     } else {
+   //         m_i=false;
+   //         break;
+   //     }
+   //     i++;
+   //     j++;
+   // }
+   // if(m_i==true){
+   //     return true;
+   // }
+   // i=0;
+   // j=i+1;
+   // while(j<nums.length){
+   //     if(nums[i] >= nums[j]){
+          
+   //     } else  {
+   //         m_d=false;
+   //         break;
+   //     }
+   //     i++;
+   //     j++;
+   // }
+   // if(m_d==true){
+   //     return true;
+   // }
+
+   // return false;
+
+   // // Method 2: TC=O(n), SC=O(1)
+   let pointer1=0;
+   let pointer2=nums.length-1;
+  
+   if(nums[pointer1]==nums[pointer2]){
+       for(let i=0;i<nums.length-1;i++){
+           if(nums[i]!==nums[i+1]){
+               return false;
+           }
+       }
+      
+   } else if(nums[pointer1]<=nums[pointer2]){
+       for(let i=0;i<nums.length-1;i++){
+           if(nums[i]>nums[i+1]){
+               return false;
+           }
+       }
+   } else {
+       for (let i=0;i<nums.length-1;i++){
+           if(nums[i]<nums[i+1]){
+               return false;
+           }
+       }
+   }
+  
+   return true;
+};
+

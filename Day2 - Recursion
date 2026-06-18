@@ -3,11 +3,27 @@ Day2 - Recursion
 
 Recursion: Function calling itself until base condition/termination condition.
 
+Recursive Leap of Faith: 
+1. Understand the problem (eg:- print 321123)
+2. Identify Subproblem (eg:- print 2112)
+3. Trust / Faith
+4. Link 1 and 2 (eg:- print 321123)
+5. Base Condition (eg:- for 0 return)
+
+fun seq(n){
+	If n=0 return
+	Print n
+	seq(n-1)
+	Print n
+}
+seq(3)
+
 
 
 
 ///// Problem 1:---------------------------------------------------
 
 https://leetcode.com/problems/k-th-symbol-in-grammar/description/
+
 
 

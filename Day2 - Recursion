@@ -1,9 +1,9 @@
 Day2 - Recursion
 
 
-Recursion: Function calling itself until base condition/termination condition.
+# Recursion: Function calling itself until base condition/termination condition.
 
-Recursive Leap of Faith: 
+# Recursive Leap of Faith: 
 1. Understand the problem (eg:- print 321123)
 2. Identify Subproblem (eg:- print 2112)
 3. Trust / Faith
@@ -19,8 +19,130 @@ fun seq(n){
 seq(3)
 
 
+# Visualization:
+1. Recursion Tree
+2. Recursion Call Stack (LIFO)
 
-///// Problem 1:---------------------------------------------------
+Eg:- 5!
+Fun fact(n){
+	If n=1 return 1
+	return fact(n-1)*n
+}
+fact(5)
+
+1. Recursion Tree
+F(5) -> 24*5 = 120
+ |
+ V
+F(4) -> 6*4
+ |
+ V
+F(3) -> 2*3
+ |
+ V
+F(2) -> 1*2
+ |
+ V
+F(1) -> 1
+
+2. Recursion Stack (LIFO)
+| F(1) | -> 1
+| F(2) | -> 1*2
+| F(3) | -> 2*3
+| F(4) | -> 6*4
+| F(5) | -> 24*5 = 120
+
+
+# Recursion vs Iteration: 
+1. Things done recursively can also be done iteratively.
+2. Iteration does not use recursive call stack space (better space complexity).
+3. Recursion has both an ascending(calling) and descending(returning) phase, iteration has only ascending phase.
+4. Recursion has better readability, easy to write (especially for complex questions).
+
+
+
+# Recurrence Relation:
+Expresses the solution of a problem as a function of the solutions to smaller instances of the same problem.
+
+
+
+# Practice Problem 1:--------------------------------------
+Factorial —>
+function factorial(n){
+    if(n===1){
+        return 1;
+    } 
+    return factorial(n-1)*n;
+}
+let result=factorial(5); 
+console.log("result::", result); // 5*4*3*2*1=120
+
+
+# Practice Problem 2:--------------------------------------
+Fibonacci series—>
+function fibonacci(n){
+    if(n===1){
+        return 1;
+    } 
+    if(n===0){
+        return 0;
+    }
+    return fibonacci(n-1)+fibonacci(n-2);
+}
+let result=fibonacci(5); 
+console.log("result::", result); // 0 1 1 2 3 5
+
+
+# Practice Problem 3:--------------------------------------
+Sum of n to 0 —>
+function sum(n){
+    if(n===0){
+        return 0;
+    } 
+    return sum(n-1)+n;
+}
+let result=sum(5); 
+console.log("result::", result); // 5 4 3 2 1
+
+
+
+# Practice Problem 4:--------------------------------------
+Sum of 0 to n —>
+function sum(curr, n){
+    if(curr===n){
+        return n;
+    } 
+    return sum(curr+1, n)+curr;
+}
+let result=sum(0,5); 
+console.log("result::", result); // 1 2 3 4 5
+
+
+# Recursion is parent of:
+1. Backtracking - guided form of recursion
+2. Dynamic Programming - top down/memoization is recursive. Bottom up/tabulation is iterative
+3. Greedy Algorithms - recursion when try to optimise next step (short term)
+4. Divide and conquer - divide into subproblems and solve each subproblems independently
+
+
+
+# Complexity Analysis of Recursive Solution:
+              O
+	       /	\
+          O      O
+        /  \    /  \
+       O   O    O   O
+ TC = (no. of nodes) * (work done per node)
+ 
+ If leaf nodes(LN) and other nodes(ON) are doing different tasks then,
+ TC = (LN * LW) + (ON * OW)
+
+ SC= O(n) (=depth of tree=recursive call stack=n)
+
+
+
+
+# Problem 1:---------------------------------------------------
 
 https://leetcode.com/problems/k-th-symbol-in-grammar/description/
 

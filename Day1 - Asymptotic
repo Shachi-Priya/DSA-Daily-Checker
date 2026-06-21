@@ -1,12 +1,11 @@
 Day1 - Asymptotic
 
 
-Asymptotic Analysis: In what proportion the no. operations will grow as the input grows.
+# Asymptotic Analysis: In what proportion the no. operations will grow as the input grows.
 Asymptotic Analysis is expressed using Big O notation.
 
 
-
-///// Problem 1:---------------------------------------------------
+# Problem 1:---------------------------------------------------
 
 https://leetcode.com/problems/squares-of-a-sorted-array/
 
@@ -32,9 +31,10 @@ var sortedSquares = function(nums) {
 };
 
 
-///// Problem 2:---------------------------------------------------
+# Problem 2:---------------------------------------------------
 
 https://leetcode.com/problems/monotonic-array/description/
+
 
 var isMonotonic = function(nums) {
    // // Method 1: TC=O(n), SC=O(1)

@@ -6,6 +6,7 @@ Asymptotic Analysis is expressed using Big O notation.
 
 
 # Problem 1:---------------------------------------------------
+977. Squares of a Sorted Array
 
 https://leetcode.com/problems/squares-of-a-sorted-array/
 
@@ -32,6 +33,7 @@ var sortedSquares = function(nums) {
 
 
 # Problem 2:---------------------------------------------------
+896. Monotonic Array
 
 https://leetcode.com/problems/monotonic-array/description/
 

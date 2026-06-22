@@ -140,9 +140,8 @@ console.log("result::", result); // 1 2 3 4 5
  SC= O(n) (=depth of tree=recursive call stack=n)
 
 
-
-
 # Problem 1:---------------------------------------------------
+779. K-th Symbol in Grammar
 
 https://leetcode.com/problems/k-th-symbol-in-grammar/description/
 
@@ -166,6 +165,11 @@ var kthGrammar = function(n, k) {
 
 };
 
+
+# Problem 2:---------------------------------------------------
+1823. Find the Winner of the Circular Game
+
+https://leetcode.com/problems/find-the-winner-of-the-circular-game/
 
 
 

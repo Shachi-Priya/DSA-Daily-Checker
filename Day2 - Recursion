@@ -172,22 +172,17 @@ var kthGrammar = function(n, k) {
 https://leetcode.com/problems/find-the-winner-of-the-circular-game/
 
 var findTheWinner = function(n, k) {
-    let arr = Array.from({length: n}, (_, i) => i + 1);
-
-    function helper(arr, startIndex) {
-        // Base case
-        if (arr.length === 1) {
-            return arr[0];
-        }
-        // Recursive case
-        let indexToRemove = (startIndex + k - 1) % arr.length;
-        arr.splice(indexToRemove, 1);
-        return helper(arr, indexToRemove);
-    }
-
-    return helper(arr, 0);
+    // TC= O(n^2)
+    // SC= O(n) [recursion call stack]
+    let array=Array.from({length:n}, (_,i)=>i+1);
+    return helper(array, 0, k);
 };
 
-
-
-
+function helper(array, startIndex, k){ // TC=O(n)
+    if(array.length==1){
+        return array[0];
+    }
+    let indexToRemove=(startIndex+k-1)%array.length;
+    array.splice(indexToRemove, 1); // TC=O(n)
+    return helper(array, indexToRemove, k);
+}

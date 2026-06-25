@@ -188,3 +188,16 @@ function helper(array, startIndex, k){ // TC=O(n)
 }
 
 
+
+var findTheWinner = function(n, k) {
+    // TC= O(n)
+    // SC= O(n) [recursion call stack]
+    return josephus(n, k)+1;
+};
+
+function josephus(n, k){
+    if(n==1){
+        return 0;
+    }
+    return (josephus(n-1, k)+k)%n;
+}

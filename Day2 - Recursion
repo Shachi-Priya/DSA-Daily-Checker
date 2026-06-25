@@ -171,33 +171,36 @@ var kthGrammar = function(n, k) {
 
 https://leetcode.com/problems/find-the-winner-of-the-circular-game/
 
+// approach 1
 var findTheWinner = function(n, k) {
-    // TC= O(n^2)
-    // SC= O(n) [recursion call stack]
-    let array=Array.from({length:n}, (_,i)=>i+1);
-    return helper(array, 0, k);
+   // TC= O(n^2)
+   // SC= O(n) [recursion call stack]
+   let array=Array.from({length:n}, (_,i)=>i+1);
+   return helper(array, 0, k);
 };
 
 function helper(array, startIndex, k){ // TC=O(n)
-    if(array.length==1){
-        return array[0];
-    }
-    let indexToRemove=(startIndex+k-1)%array.length;
-    array.splice(indexToRemove, 1); // TC=O(n)
-    return helper(array, indexToRemove, k);
+   if(array.length==1){
+       return array[0];
+   }
+   let indexToRemove=(startIndex+k-1)%array.length;
+   array.splice(indexToRemove, 1); // TC=O(n)
+   return helper(array, indexToRemove, k);
 }
 
 
-
+// approach 2
 var findTheWinner = function(n, k) {
-    // TC= O(n)
-    // SC= O(n) [recursion call stack]
-    return josephus(n, k)+1;
+   // TC= O(n)
+   // SC= O(n) [recursion call stack]
+   return josephus(n, k)+1;
 };
 
 function josephus(n, k){
-    if(n==1){
-        return 0;
-    }
-    return (josephus(n-1, k)+k)%n;
+   if(n==1){
+       return 0;
+   }
+   return (josephus(n-1, k)+k)%n;
 }
+
+

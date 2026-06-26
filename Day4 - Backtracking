@@ -1,0 +1,112 @@
+Day4 - Backtracking
+
+
+
+# Backtracking: It is an algorithmic approach to find solutions to problems that involve many possible paths.
+Solutions are built step by step and this is handled through recursion.
+If a path doesn’t lead to a solution/violates constraints then that path is abandoned.
+It is a controlled recursion.
+It makes changes in place(pass by reference) - modifies the state of the problem in place - we don’t create new copies, rather we make changes in place and it is good for space complexity).
+
+
+# Recursion vs Backtracking: 
+1. Recursion - Function calls itself until the base condition is met.
+2. Backtracking - Controlled recursion(we can abandon paths that don't lead to solution) + modify state of the problem in place(pass by reference).
+
+
+# How does backtracking work: 
+Step 1: Explore one option
+Step 2: Keep building the solution with recursion, as we go on and identify it violates constraints then we backtrack and explore different paths.
+Step 3: If the condition is not violated and identified valid solutions then either make a copy of it or return it.
+
+
+# Brute Force vs  Backtracking: 
+1. Recursion - Generates all possible solutions. 
+Eg:- sudoku: it fist finds 9*9 possibilities then a function goes through each solution to identify working solutions.
+2. Backtracking - Continues only if conditions are favourable. 
+Eg:- sudoku: it first checks favorable conditions then finds possibilities.
+
+
+# Identify when to use Backtracking: 
+1. If a problem requires every possible path. 
+2. If there are multiple solutions and you want all of them.
+3. Not for optimisation problems, rather they require dynamic programming.
+
+
+# Blueprint to solve question using Backtracking: 
+function helper(){
+If solved -> save/print the solution
+			return
+	for choice in choices{
+		if(is valid choice){
+		Choose
+			helper()
+			revert choice
+}
+}
+}
+helper()
+
+
+# Practice Problem 1:---------------------------------------------------
+Permutation of n distinct numbers in an array —>
+
+function permutation(nums){
+    // TC:- O(n*n!) [n depth for all n! permutations]
+    // SC:- O(n) [n->recursive call stack]
+    
+    let res=[];
+    function helper(i){
+        if(i==nums.length-1){
+            return res.push([...nums]);
+        }
+    
+        for(let j=i;j<nums.length;j++){
+            [nums[i],nums[j]]=[nums[j],nums[i]];
+            helper(i+1);
+            // backtracking
+            [nums[i],nums[j]]=[nums[j],nums[i]];
+        }
+    }
+    helper(0);
+    return res;
+}
+let nums=[1,2,3];
+let result=permutation(nums);
+console.log(result);
+
+
+# Practice Problem 2:---------------------------------------------------
+Permutation of n numbers in an array, might contain duplicates —>
+
+function permutation(nums){
+    // TC:- O(n*n!) [n depth for all n! permutations]
+    // SC:- O(n) [n->recursive call stack]
+    
+    let res=[];
+    function helper(i){
+        if(i==nums.length-1){
+            return res.push([...nums]);
+        }
+    
+        let hash={}
+        for(let j=i;j<nums.length;j++){
+            if(!hash[nums[j]]){
+                hash[nums[j]]=1;
+                [nums[i],nums[j]]=[nums[j],nums[i]];
+                helper(i+1);
+                // backtracking
+                [nums[i],nums[j]]=[nums[j],nums[i]];
+            }
+        }
+    }
+    helper(0);
+    return res;
+}
+let nums=[1,1,2];
+let result=permutation(nums);
+console.log(result);
+
+
+
+

@@ -188,7 +188,6 @@ function helper(array, startIndex, k){ // TC=O(n)
    return helper(array, indexToRemove, k);
 }
 
-
 // approach 2
 var findTheWinner = function(n, k) {
    // TC= O(n)
@@ -203,4 +202,14 @@ function josephus(n, k){
    return (josephus(n-1, k)+k)%n;
 }
 
+// approach3:
+var findTheWinner = function(n, k) {
+    // TC= O(n)
+    // SC= O(1) [only iteration, no recursion call stack]
+    let survivor=0;
+    for(let i=2;i<=n;i++){
+        survivor=(survivor+k)%i;
+    }
+    return survivor+1;
+};
 

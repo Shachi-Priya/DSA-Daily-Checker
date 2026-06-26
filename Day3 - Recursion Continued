@@ -1,0 +1,63 @@
+Day3 - Recursion Continued
+
+
+# Problem 1:---------------------------------------------------
+Tower Of Hanoi
+
+https://www.geeksforgeeks.org/problems/tower-of-hanoi-1587115621/1
+
+class Solution {
+    towerOfHanoi(n, from, to, aux) {
+        // code here
+        // TC:- O(2^n-1)
+        // SC:- O(n) [recursive call stack]
+        let count=0;
+        function helper(n, from, to, aux){
+            if(n==1){
+                count++;
+                return;
+            }
+            // n-1 disk from aux
+            helper(n-1, from, aux, to);
+            // nth disk from to
+            count++;
+            // n-1 disk aux to
+            helper(n-1, aux, to, from);
+        }
+        
+        helper(n, from, to, aux);
+        return count;
+    }
+}
+
+
+# Practice Problem 1:---------------------------------------------------
+Power Sum —>
+
+
+function powerSum(array){
+    // TC:- O(N) [N->total no. of elements in main array and all subarrays]
+    // SC:- O(d) [d->maximum depth of call stack]
+    let pow=1;
+    function helper(array, pow){
+        let sum=0;
+        array.forEach((item)=>{
+            if(Array.isArray(item)){
+                sum+=helper(item, pow+1);
+            } else {
+                sum+=item;
+            }
+        })
+        return Math.pow(sum, pow)
+    }
+    return helper(array, pow);
+}
+let array=[1,2,[3,4],[[2]]];
+let result=powerSum(array);
+console.log(result);// (3+(7^2)+((2^3)^2)=116 => // TC:- O(8), SC:- O(3)
+
+
+  
+
+
+

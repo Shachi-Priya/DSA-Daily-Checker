@@ -1,0 +1,62 @@
+Day5 - Backtracking Continued 1
+
+
+
+# Problem 1:---------------------------------------------------
+78. Subsets - uniques elements
+
+https://leetcode.com/problems/subsets/description/
+
+var subsets = function(nums) {
+   // TC: O(n*2^n) [n times fn called for getting 1 subset, and total subsets will be 2^n]
+   // SC: O(n) [recursive call stack]
+
+   let res=[];
+   function helper(nums, i , subset){
+       if(i===nums.length){
+           res.push([...subset]);
+           return;
+       }
+       // include element
+       subset.push(nums[i]);
+       helper(nums, i+1, subset);
+       subset.pop();
+       // exclude element
+       helper(nums, i+1, subset);
+   }
+   helper(nums, 0, []);
+   return res;
+};
+
+
+# Problem 2:---------------------------------------------------
+90. Subsets II - duplicate elements
+
+https://leetcode.com/problems/subsets/description/
+
+var subsetsWithDup = function(nums) {
+   // TC: O(n*2^n) [n times fn called for getting 1 subset, and total subsets will be 2^n]
+   // SC: O(n) [recursive call stack]
+
+   let res=[];
+   nums.sort((a,b)=>a-b);
+   function helper(nums, i , subset){
+       if(i===nums.length){
+           res.push([...subset]);
+           return;
+       }
+       // include element
+       subset.push(nums[i]);
+       helper(nums, i+1, subset);
+       subset.pop();
+       // condition
+       while(i<nums.length-1 && nums[i]===nums[i+1]){
+           i++;
+       }
+       // exclude element
+       helper(nums, i+1, subset);
+   }
+   helper(nums, 0, []);
+   return res;
+};
+

@@ -16,8 +16,8 @@ var combine = function(n, k) {
             res.push([...curr]);
             return;
         }
-
-        for(let j=start; j<=n; j++){
+        let need=k-curr.length;
+        for(let j=start; j<=n-need+1; j++){
             curr.push(j);
             helper(j+1, curr);
             curr.pop();

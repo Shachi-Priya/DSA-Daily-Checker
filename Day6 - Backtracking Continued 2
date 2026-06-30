@@ -7,6 +7,21 @@ Day6 - Backtracking Continued 2
 
 https://leetcode.com/problems/combinations/description/
 
-Day6 - Backtracking Continued 2
+var combine = function(n, k) {
+    // TC: O(k*(n!/k!*(n-k)!))
+    // SC: O(k)
+    let res=[];
+    function helper(start, curr){
+        if(curr.length==k){
+            res.push([...curr]);
+            return;
+        }
 
+        for(let j=start; j<=n; j++){
+            curr.push(j);
+            helper(j+1, curr);
+        }
+
+    }
+};
 

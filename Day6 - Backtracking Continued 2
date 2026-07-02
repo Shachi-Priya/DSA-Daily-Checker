@@ -27,3 +27,37 @@ var combine = function(n, k) {
     helper(1, []);
     return res;
 };
+
+
+# Problem 2:---------------------------------------------------
+39. Combination Sum
+
+https://leetcode.com/problems/combinations/description/
+
+var combinationSum = function(candidates, target) {
+   // TC: O(N^(T/m+1))
+   // SC: O(T/m) [recursive call stack]
+   // N= no. of candidates
+   // T=Target
+   // m= minimum value among candidates
+   // maximum depth of the tree= T/m
+   // maximum no. of nodes= N^(T/m+1)
+
+   let res=[];
+   function helper(index, curr, currSum){
+       if(currSum>target){
+           return;
+       }
+       if(currSum===target){
+           res.push([...curr]);
+           return res;
+       }
+       for(let j=index;j<candidates.length;j++){
+           curr.push(candidates[j]);
+           helper(j, curr, currSum+candidates[j]);
+           curr.pop();
+       }
+   }
+   helper(0, [], 0)
+   return res;
+};

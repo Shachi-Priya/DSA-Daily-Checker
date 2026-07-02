@@ -1,0 +1,66 @@
+Day7 - Backtracking Continued 3
+
+
+
+# Problem 1:---------------------------------------------------
+77. Combinations
+
+https://leetcode.com/problems/combination-sum-ii/
+
+var combinationSum2 = function(candidates, target) {
+  let res=[];
+  candidates.sort((a,b)=>a-b);
+
+  function helper(index, curr, currSum){
+      if(currSum===target){
+          res.push([...curr]);
+          return res;
+      }
+      if(currSum>target || index>candidates.length-1){
+          return;
+      }
+      let hashMap={};
+      for(let j=index;j<candidates.length;j++){
+           if(!hashMap[candidates[j]]){
+               hashMap[candidates[j]]=1;
+               curr.push(candidates[j]);
+               helper(j+1, curr, currSum+candidates[j]);
+               curr.pop();
+           }
+      }
+  }
+  helper(0, [], 0)
+  return res;
+
+};
+
+
+# Problem 2:---------------------------------------------------
+216. Combination Sum III
+
+https://leetcode.com/problems/combination-sum-iii/description/
+
+var combinationSum3 = function(k, n) {
+   let res=[];
+   function helper(index, curr, currSum){
+       if(currSum===n && curr.length===k){
+           res.push([...curr]);
+           return res;
+       }
+       if(currSum>n || index>n){
+           return;
+       }
+       for(let j=index;j<=n;j++){
+           if(curr.length<=k && j<=9){
+               curr.push(j);
+               helper(j+1, curr, currSum+j);
+               curr.pop();
+           }
+       }
+   }
+   helper(1, [], 0);
+   return res;
+};
+
+
+

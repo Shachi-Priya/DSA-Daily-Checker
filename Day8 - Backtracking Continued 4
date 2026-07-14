@@ -17,7 +17,7 @@ var solveSudoku = function(board) {
 # Problem 2:---------------------------------------------------
 51. N-Queens
 
-https://leetcode.com/problems/n-queens/description/
+https://leetcode.com/problems/n-queens/description
 
 
 

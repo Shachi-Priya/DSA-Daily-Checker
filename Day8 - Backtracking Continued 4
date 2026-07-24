@@ -19,5 +19,57 @@ var solveSudoku = function(board) {
 
 https://leetcode.com/problems/n-queens/description
 
+var solveNQueens = function(n) {
+    // TC: O(n!)
+    // SC: O(n^2)
+    let res=[];
+    let board=new Array(n).fill().map(()=>new Array(n).fill('.'));
+
+    function convertBoard(board){
+        return board.map((row)=>row.join(""));
+    }
+    
+    function isValid(row, col, board){
+        //check the same col if other queens found
+        for(let x=0;x<row;x++){
+            if(board[x][col]==='Q')
+                return false;
+        }
+
+        // check the top-left diagonal
+        for(let x=row,y=col;x>=0 && y>=0;x--,y--){
+            if(board[x][y]==='Q')
+                return false;
+        }
+
+        // check the top-right diagonal
+        for(let x=row,y=col;x>=0 && y<n;x--,y++){
+            if(board[x][y]==='Q')
+                return false;
+        }
+
+        return true;
+    }
+
+    function positionNextQueen(board, row){
+        // if all queens are placed
+        if(row===n){
+            res.push(convertBoard(board));
+            return;
+        }
+
+        // try placing a queen in each column of current row
+        for(let col=0;col<n;col++){
+            if(isValid(row, col, board)){
+                board[row][col]='Q'; // place the queen
+                positionNextQueen(board, row+1); // move to next row
+                board[row][col]='.'; // backtrack step: remove the queen
+            }
+        }
+    }
+
+    positionNextQueen(board, 0);
+    return res;
+};
 
 
